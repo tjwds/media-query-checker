@@ -6,8 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Media Query checker</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap");
+
+      body {
+        font-size: 16px;
+        max-width: 800px;
+        margin: 36px auto 0;
+        padding: 0 12px 12px;
+        background: #effdff;
+        color: #453b4d;
+      }
+
+      h1 {
+        font-family: Raleway, sans-serif;
+        font-weight: 700;
+        margin-bottom: 36px;
+      }
+
+      div {
+        border: 1px solid black;
+        float: left;
+        padding: 14px;
+        min-height: 20px;
+        margin: -0.5px;
+        background: #effdff;
+      }
+
       pre {
         display: inline;
+        background: #f7e9ec;
+        color: #880303;
+        padding: 5px;
       }
 
       #print,
@@ -663,6 +692,10 @@
         #update .fast {
           display: inline;
         }
+      }
+      #update {
+        /* hack */
+        margin-bottom: 12px;
       }
     </style>
   </head>
