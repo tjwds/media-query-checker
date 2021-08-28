@@ -1,830 +1,920 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Media Query checker</title>
     <style>
-        pre {
-            display: inline;
-        }
+      pre {
+        display: inline;
+      }
 
-        #print,
-        #screen,
+      #print,
+      #screen,
+      #speech {
+        display: none;
+      }
+      @media screen {
+        #screen {
+          display: inline;
+        }
+      }
+      @media print {
+        #print {
+          display: inline;
+        }
+      }
+      @media speech {
         #speech {
-            display: none;
+          display: inline;
         }
-        @media screen {
-            #screen {
-                display: inline;
-            }
-        }
-        @media print {
-            #print {
-                display: inline;
-            }
-        }
-        @media speech {
-            #speech {
-                display: inline;
-            }
-        }
+      }
 
-        #any-hover .support,
-#any-hover .none,
-#any-hover .hover {
-    display: none;
-}
-@media (any-hover: none) {
-    #any-hover .support {
-        display: inline;
-    }
-    #any-hover .no-support {
+      #any-hover .support,
+      #any-hover .none,
+      #any-hover .hover {
         display: none;
-    }
-    #any-hover .none {
-        display: inline;
-    }
-}
-@media (any-hover: hover) {
-    #any-hover .support {
-        display: inline;
-    }
-    #any-hover .no-support {
+      }
+      @media (any-hover: none) {
+        #any-hover .support {
+          display: inline;
+        }
+        #any-hover .no-support {
+          display: none;
+        }
+        #any-hover .none {
+          display: inline;
+        }
+      }
+      @media (any-hover: hover) {
+        #any-hover .support {
+          display: inline;
+        }
+        #any-hover .no-support {
+          display: none;
+        }
+        #any-hover .hover {
+          display: inline;
+        }
+      }
+      #any-pointer .support,
+      #any-pointer .none,
+      #any-pointer .coarse,
+      #any-pointer .fine {
         display: none;
-    }
-    #any-hover .hover {
-        display: inline;
-    }
-}
-#any-pointer .support,
-#any-pointer .none,
-#any-pointer .coarse,
-#any-pointer .fine {
-    display: none;
-}
-@media (any-pointer: none) {
-    #any-pointer .support {
-        display: inline;
-    }
-    #any-pointer .no-support {
+      }
+      @media (any-pointer: none) {
+        #any-pointer .support {
+          display: inline;
+        }
+        #any-pointer .no-support {
+          display: none;
+        }
+        #any-pointer .none {
+          display: inline;
+        }
+      }
+      @media (any-pointer: coarse) {
+        #any-pointer .support {
+          display: inline;
+        }
+        #any-pointer .no-support {
+          display: none;
+        }
+        #any-pointer .coarse {
+          display: inline;
+        }
+      }
+      @media (any-pointer: fine) {
+        #any-pointer .support {
+          display: inline;
+        }
+        #any-pointer .no-support {
+          display: none;
+        }
+        #any-pointer .fine {
+          display: inline;
+        }
+      }
+      #color-gamut .support,
+      #color-gamut .srgb,
+      #color-gamut .p3,
+      #color-gamut .rec2020 {
         display: none;
-    }
-    #any-pointer .none {
-        display: inline;
-    }
-}
-@media (any-pointer: coarse) {
-    #any-pointer .support {
-        display: inline;
-    }
-    #any-pointer .no-support {
+      }
+      @media (color-gamut: srgb) {
+        #color-gamut .support {
+          display: inline;
+        }
+        #color-gamut .no-support {
+          display: none;
+        }
+        #color-gamut .srgb {
+          display: inline;
+        }
+      }
+      @media (color-gamut: p3) {
+        #color-gamut .support {
+          display: inline;
+        }
+        #color-gamut .no-support {
+          display: none;
+        }
+        #color-gamut .p3 {
+          display: inline;
+        }
+      }
+      @media (color-gamut: rec2020) {
+        #color-gamut .support {
+          display: inline;
+        }
+        #color-gamut .no-support {
+          display: none;
+        }
+        #color-gamut .rec2020 {
+          display: inline;
+        }
+      }
+      #display-mode .support,
+      #display-mode .fullscreen,
+      #display-mode .standalone,
+      #display-mode .minimal-ui,
+      #display-mode .browser {
         display: none;
-    }
-    #any-pointer .coarse {
-        display: inline;
-    }
-}
-@media (any-pointer: fine) {
-    #any-pointer .support {
-        display: inline;
-    }
-    #any-pointer .no-support {
+      }
+      @media (display-mode: fullscreen) {
+        #display-mode .support {
+          display: inline;
+        }
+        #display-mode .no-support {
+          display: none;
+        }
+        #display-mode .fullscreen {
+          display: inline;
+        }
+      }
+      @media (display-mode: standalone) {
+        #display-mode .support {
+          display: inline;
+        }
+        #display-mode .no-support {
+          display: none;
+        }
+        #display-mode .standalone {
+          display: inline;
+        }
+      }
+      @media (display-mode: minimal-ui) {
+        #display-mode .support {
+          display: inline;
+        }
+        #display-mode .no-support {
+          display: none;
+        }
+        #display-mode .minimal-ui {
+          display: inline;
+        }
+      }
+      @media (display-mode: browser) {
+        #display-mode .support {
+          display: inline;
+        }
+        #display-mode .no-support {
+          display: none;
+        }
+        #display-mode .browser {
+          display: inline;
+        }
+      }
+      #forced-colors .support,
+      #forced-colors .none,
+      #forced-colors .active {
         display: none;
-    }
-    #any-pointer .fine {
-        display: inline;
-    }
-}
-#color-gamut .support,
-#color-gamut .srgb,
-#color-gamut .p3,
-#color-gamut .rec2020 {
-    display: none;
-}
-@media (color-gamut: srgb) {
-    #color-gamut .support {
-        display: inline;
-    }
-    #color-gamut .no-support {
+      }
+      @media (forced-colors: none) {
+        #forced-colors .support {
+          display: inline;
+        }
+        #forced-colors .no-support {
+          display: none;
+        }
+        #forced-colors .none {
+          display: inline;
+        }
+      }
+      @media (forced-colors: active) {
+        #forced-colors .support {
+          display: inline;
+        }
+        #forced-colors .no-support {
+          display: none;
+        }
+        #forced-colors .active {
+          display: inline;
+        }
+      }
+      #grid .support,
+      #grid .zero,
+      #grid .one {
         display: none;
-    }
-    #color-gamut .srgb {
-        display: inline;
-    }
-}
-@media (color-gamut: p3) {
-    #color-gamut .support {
-        display: inline;
-    }
-    #color-gamut .no-support {
+      }
+      @media (grid: zero) {
+        #grid .support {
+          display: inline;
+        }
+        #grid .no-support {
+          display: none;
+        }
+        #grid .zero {
+          display: inline;
+        }
+      }
+      @media (grid: one) {
+        #grid .support {
+          display: inline;
+        }
+        #grid .no-support {
+          display: none;
+        }
+        #grid .one {
+          display: inline;
+        }
+      }
+      #hover .support,
+      #hover .none,
+      #hover .hover {
         display: none;
-    }
-    #color-gamut .p3 {
-        display: inline;
-    }
-}
-@media (color-gamut: rec2020) {
-    #color-gamut .support {
-        display: inline;
-    }
-    #color-gamut .no-support {
+      }
+      @media (hover: none) {
+        #hover .support {
+          display: inline;
+        }
+        #hover .no-support {
+          display: none;
+        }
+        #hover .none {
+          display: inline;
+        }
+      }
+      @media (hover: hover) {
+        #hover .support {
+          display: inline;
+        }
+        #hover .no-support {
+          display: none;
+        }
+        #hover .hover {
+          display: inline;
+        }
+      }
+      #inverted-colors .support,
+      #inverted-colors .none,
+      #inverted-colors .inverted {
         display: none;
-    }
-    #color-gamut .rec2020 {
-        display: inline;
-    }
-}
-#display-mode .support,
-#display-mode .fullscreen,
-#display-mode .standalone,
-#display-mode .minimal-ui,
-#display-mode .browser {
-    display: none;
-}
-@media (display-mode: fullscreen) {
-    #display-mode .support {
-        display: inline;
-    }
-    #display-mode .no-support {
+      }
+      @media (inverted-colors: none) {
+        #inverted-colors .support {
+          display: inline;
+        }
+        #inverted-colors .no-support {
+          display: none;
+        }
+        #inverted-colors .none {
+          display: inline;
+        }
+      }
+      @media (inverted-colors: inverted) {
+        #inverted-colors .support {
+          display: inline;
+        }
+        #inverted-colors .no-support {
+          display: none;
+        }
+        #inverted-colors .inverted {
+          display: inline;
+        }
+      }
+      #orientation .support,
+      #orientation .portrait,
+      #orientation .landscape {
         display: none;
-    }
-    #display-mode .fullscreen {
-        display: inline;
-    }
-}
-@media (display-mode: standalone) {
-    #display-mode .support {
-        display: inline;
-    }
-    #display-mode .no-support {
+      }
+      @media (orientation: portrait) {
+        #orientation .support {
+          display: inline;
+        }
+        #orientation .no-support {
+          display: none;
+        }
+        #orientation .portrait {
+          display: inline;
+        }
+      }
+      @media (orientation: landscape) {
+        #orientation .support {
+          display: inline;
+        }
+        #orientation .no-support {
+          display: none;
+        }
+        #orientation .landscape {
+          display: inline;
+        }
+      }
+      #overflow-block .support,
+      #overflow-block .none,
+      #overflow-block .scroll,
+      #overflow-block .optional-paged,
+      #overflow-block .paged {
         display: none;
-    }
-    #display-mode .standalone {
-        display: inline;
-    }
-}
-@media (display-mode: minimal-ui) {
-    #display-mode .support {
-        display: inline;
-    }
-    #display-mode .no-support {
+      }
+      @media (overflow-block: none) {
+        #overflow-block .support {
+          display: inline;
+        }
+        #overflow-block .no-support {
+          display: none;
+        }
+        #overflow-block .none {
+          display: inline;
+        }
+      }
+      @media (overflow-block: scroll) {
+        #overflow-block .support {
+          display: inline;
+        }
+        #overflow-block .no-support {
+          display: none;
+        }
+        #overflow-block .scroll {
+          display: inline;
+        }
+      }
+      @media (overflow-block: optional-paged) {
+        #overflow-block .support {
+          display: inline;
+        }
+        #overflow-block .no-support {
+          display: none;
+        }
+        #overflow-block .optional-paged {
+          display: inline;
+        }
+      }
+      @media (overflow-block: paged) {
+        #overflow-block .support {
+          display: inline;
+        }
+        #overflow-block .no-support {
+          display: none;
+        }
+        #overflow-block .paged {
+          display: inline;
+        }
+      }
+      #overflow-inline .support,
+      #overflow-inline .none,
+      #overflow-inline .scroll {
         display: none;
-    }
-    #display-mode .minimal-ui {
-        display: inline;
-    }
-}
-@media (display-mode: browser) {
-    #display-mode .support {
-        display: inline;
-    }
-    #display-mode .no-support {
+      }
+      @media (overflow-inline: none) {
+        #overflow-inline .support {
+          display: inline;
+        }
+        #overflow-inline .no-support {
+          display: none;
+        }
+        #overflow-inline .none {
+          display: inline;
+        }
+      }
+      @media (overflow-inline: scroll) {
+        #overflow-inline .support {
+          display: inline;
+        }
+        #overflow-inline .no-support {
+          display: none;
+        }
+        #overflow-inline .scroll {
+          display: inline;
+        }
+      }
+      #pointer .support,
+      #pointer .none,
+      #pointer .fine,
+      #pointer .coarse {
         display: none;
-    }
-    #display-mode .browser {
-        display: inline;
-    }
-}
-#forced-colors .support,
-#forced-colors .none,
-#forced-colors .active {
-    display: none;
-}
-@media (forced-colors: none) {
-    #forced-colors .support {
-        display: inline;
-    }
-    #forced-colors .no-support {
+      }
+      @media (pointer: none) {
+        #pointer .support {
+          display: inline;
+        }
+        #pointer .no-support {
+          display: none;
+        }
+        #pointer .none {
+          display: inline;
+        }
+      }
+      @media (pointer: fine) {
+        #pointer .support {
+          display: inline;
+        }
+        #pointer .no-support {
+          display: none;
+        }
+        #pointer .fine {
+          display: inline;
+        }
+      }
+      @media (pointer: coarse) {
+        #pointer .support {
+          display: inline;
+        }
+        #pointer .no-support {
+          display: none;
+        }
+        #pointer .coarse {
+          display: inline;
+        }
+      }
+      #prefers-color-scheme .support,
+      #prefers-color-scheme .light,
+      #prefers-color-scheme .dark {
         display: none;
-    }
-    #forced-colors .none {
-        display: inline;
-    }
-}
-@media (forced-colors: active) {
-    #forced-colors .support {
-        display: inline;
-    }
-    #forced-colors .no-support {
+      }
+      @media (prefers-color-scheme: light) {
+        #prefers-color-scheme .support {
+          display: inline;
+        }
+        #prefers-color-scheme .no-support {
+          display: none;
+        }
+        #prefers-color-scheme .light {
+          display: inline;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        #prefers-color-scheme .support {
+          display: inline;
+        }
+        #prefers-color-scheme .no-support {
+          display: none;
+        }
+        #prefers-color-scheme .dark {
+          display: inline;
+        }
+      }
+      #prefers-contrast .support,
+      #prefers-contrast .no-preference,
+      #prefers-contrast .more,
+      #prefers-contrast .less {
         display: none;
-    }
-    #forced-colors .active {
-        display: inline;
-    }
-}
-#grid .support,
-#grid .zero,
-#grid .one {
-    display: none;
-}
-@media (grid: zero) {
-    #grid .support {
-        display: inline;
-    }
-    #grid .no-support {
+      }
+      @media (prefers-contrast: no-preference) {
+        #prefers-contrast .support {
+          display: inline;
+        }
+        #prefers-contrast .no-support {
+          display: none;
+        }
+        #prefers-contrast .no-preference {
+          display: inline;
+        }
+      }
+      @media (prefers-contrast: more) {
+        #prefers-contrast .support {
+          display: inline;
+        }
+        #prefers-contrast .no-support {
+          display: none;
+        }
+        #prefers-contrast .more {
+          display: inline;
+        }
+      }
+      @media (prefers-contrast: less) {
+        #prefers-contrast .support {
+          display: inline;
+        }
+        #prefers-contrast .no-support {
+          display: none;
+        }
+        #prefers-contrast .less {
+          display: inline;
+        }
+      }
+      #prefers-reduced-motion .support,
+      #prefers-reduced-motion .no-preference,
+      #prefers-reduced-motion .reduce {
         display: none;
-    }
-    #grid .zero {
-        display: inline;
-    }
-}
-@media (grid: one) {
-    #grid .support {
-        display: inline;
-    }
-    #grid .no-support {
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        #prefers-reduced-motion .support {
+          display: inline;
+        }
+        #prefers-reduced-motion .no-support {
+          display: none;
+        }
+        #prefers-reduced-motion .no-preference {
+          display: inline;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #prefers-reduced-motion .support {
+          display: inline;
+        }
+        #prefers-reduced-motion .no-support {
+          display: none;
+        }
+        #prefers-reduced-motion .reduce {
+          display: inline;
+        }
+      }
+      #prefers-reduced-transparency .support,
+      #prefers-reduced-transparency .no-preference,
+      #prefers-reduced-transparency .reduce {
         display: none;
-    }
-    #grid .one {
-        display: inline;
-    }
-}
-#hover .support,
-#hover .none,
-#hover .hover {
-    display: none;
-}
-@media (hover: none) {
-    #hover .support {
-        display: inline;
-    }
-    #hover .no-support {
+      }
+      @media (prefers-reduced-transparency: no-preference) {
+        #prefers-reduced-transparency .support {
+          display: inline;
+        }
+        #prefers-reduced-transparency .no-support {
+          display: none;
+        }
+        #prefers-reduced-transparency .no-preference {
+          display: inline;
+        }
+      }
+      @media (prefers-reduced-transparency: reduce) {
+        #prefers-reduced-transparency .support {
+          display: inline;
+        }
+        #prefers-reduced-transparency .no-support {
+          display: none;
+        }
+        #prefers-reduced-transparency .reduce {
+          display: inline;
+        }
+      }
+      #scan .support,
+      #scan .interlace,
+      #scan .progressive {
         display: none;
-    }
-    #hover .none {
-        display: inline;
-    }
-}
-@media (hover: hover) {
-    #hover .support {
-        display: inline;
-    }
-    #hover .no-support {
+      }
+      @media (scan: interlace) {
+        #scan .support {
+          display: inline;
+        }
+        #scan .no-support {
+          display: none;
+        }
+        #scan .interlace {
+          display: inline;
+        }
+      }
+      @media (scan: progressive) {
+        #scan .support {
+          display: inline;
+        }
+        #scan .no-support {
+          display: none;
+        }
+        #scan .progressive {
+          display: inline;
+        }
+      }
+      #scripting .support,
+      #scripting .none,
+      #scripting .initial-only,
+      #scripting .enabled {
         display: none;
-    }
-    #hover .hover {
-        display: inline;
-    }
-}
-#inverted-colors .support,
-#inverted-colors .none,
-#inverted-colors .inverted {
-    display: none;
-}
-@media (inverted-colors: none) {
-    #inverted-colors .support {
-        display: inline;
-    }
-    #inverted-colors .no-support {
+      }
+      @media (scripting: none) {
+        #scripting .support {
+          display: inline;
+        }
+        #scripting .no-support {
+          display: none;
+        }
+        #scripting .none {
+          display: inline;
+        }
+      }
+      @media (scripting: initial-only) {
+        #scripting .support {
+          display: inline;
+        }
+        #scripting .no-support {
+          display: none;
+        }
+        #scripting .initial-only {
+          display: inline;
+        }
+      }
+      @media (scripting: enabled) {
+        #scripting .support {
+          display: inline;
+        }
+        #scripting .no-support {
+          display: none;
+        }
+        #scripting .enabled {
+          display: inline;
+        }
+      }
+      #update .support,
+      #update .none,
+      #update .slow,
+      #update .fast {
         display: none;
-    }
-    #inverted-colors .none {
-        display: inline;
-    }
-}
-@media (inverted-colors: inverted) {
-    #inverted-colors .support {
-        display: inline;
-    }
-    #inverted-colors .no-support {
-        display: none;
-    }
-    #inverted-colors .inverted {
-        display: inline;
-    }
-}
-#orientation .support,
-#orientation .portrait,
-#orientation .landscape {
-    display: none;
-}
-@media (orientation: portrait) {
-    #orientation .support {
-        display: inline;
-    }
-    #orientation .no-support {
-        display: none;
-    }
-    #orientation .portrait {
-        display: inline;
-    }
-}
-@media (orientation: landscape) {
-    #orientation .support {
-        display: inline;
-    }
-    #orientation .no-support {
-        display: none;
-    }
-    #orientation .landscape {
-        display: inline;
-    }
-}
-#overflow-block .support,
-#overflow-block .none,
-#overflow-block .scroll,
-#overflow-block .optional-paged,
-#overflow-block .paged {
-    display: none;
-}
-@media (overflow-block: none) {
-    #overflow-block .support {
-        display: inline;
-    }
-    #overflow-block .no-support {
-        display: none;
-    }
-    #overflow-block .none {
-        display: inline;
-    }
-}
-@media (overflow-block: scroll) {
-    #overflow-block .support {
-        display: inline;
-    }
-    #overflow-block .no-support {
-        display: none;
-    }
-    #overflow-block .scroll {
-        display: inline;
-    }
-}
-@media (overflow-block: optional-paged) {
-    #overflow-block .support {
-        display: inline;
-    }
-    #overflow-block .no-support {
-        display: none;
-    }
-    #overflow-block .optional-paged {
-        display: inline;
-    }
-}
-@media (overflow-block: paged) {
-    #overflow-block .support {
-        display: inline;
-    }
-    #overflow-block .no-support {
-        display: none;
-    }
-    #overflow-block .paged {
-        display: inline;
-    }
-}
-#overflow-inline .support,
-#overflow-inline .none,
-#overflow-inline .scroll {
-    display: none;
-}
-@media (overflow-inline: none) {
-    #overflow-inline .support {
-        display: inline;
-    }
-    #overflow-inline .no-support {
-        display: none;
-    }
-    #overflow-inline .none {
-        display: inline;
-    }
-}
-@media (overflow-inline: scroll) {
-    #overflow-inline .support {
-        display: inline;
-    }
-    #overflow-inline .no-support {
-        display: none;
-    }
-    #overflow-inline .scroll {
-        display: inline;
-    }
-}
-#pointer .support,
-#pointer .none,
-#pointer .fine,
-#pointer .coarse {
-    display: none;
-}
-@media (pointer: none) {
-    #pointer .support {
-        display: inline;
-    }
-    #pointer .no-support {
-        display: none;
-    }
-    #pointer .none {
-        display: inline;
-    }
-}
-@media (pointer: fine) {
-    #pointer .support {
-        display: inline;
-    }
-    #pointer .no-support {
-        display: none;
-    }
-    #pointer .fine {
-        display: inline;
-    }
-}
-@media (pointer: coarse) {
-    #pointer .support {
-        display: inline;
-    }
-    #pointer .no-support {
-        display: none;
-    }
-    #pointer .coarse {
-        display: inline;
-    }
-}
-#prefers-color-scheme .support,
-#prefers-color-scheme .light,
-#prefers-color-scheme .dark {
-    display: none;
-}
-@media (prefers-color-scheme: light) {
-    #prefers-color-scheme .support {
-        display: inline;
-    }
-    #prefers-color-scheme .no-support {
-        display: none;
-    }
-    #prefers-color-scheme .light {
-        display: inline;
-    }
-}
-@media (prefers-color-scheme: dark) {
-    #prefers-color-scheme .support {
-        display: inline;
-    }
-    #prefers-color-scheme .no-support {
-        display: none;
-    }
-    #prefers-color-scheme .dark {
-        display: inline;
-    }
-}
-#prefers-contrast .support,
-#prefers-contrast .no-preference,
-#prefers-contrast .more,
-#prefers-contrast .less {
-    display: none;
-}
-@media (prefers-contrast: no-preference) {
-    #prefers-contrast .support {
-        display: inline;
-    }
-    #prefers-contrast .no-support {
-        display: none;
-    }
-    #prefers-contrast .no-preference {
-        display: inline;
-    }
-}
-@media (prefers-contrast: more) {
-    #prefers-contrast .support {
-        display: inline;
-    }
-    #prefers-contrast .no-support {
-        display: none;
-    }
-    #prefers-contrast .more {
-        display: inline;
-    }
-}
-@media (prefers-contrast: less) {
-    #prefers-contrast .support {
-        display: inline;
-    }
-    #prefers-contrast .no-support {
-        display: none;
-    }
-    #prefers-contrast .less {
-        display: inline;
-    }
-}
-#prefers-reduced-motion .support,
-#prefers-reduced-motion .no-preference,
-#prefers-reduced-motion .reduce {
-    display: none;
-}
-@media (prefers-reduced-motion: no-preference) {
-    #prefers-reduced-motion .support {
-        display: inline;
-    }
-    #prefers-reduced-motion .no-support {
-        display: none;
-    }
-    #prefers-reduced-motion .no-preference {
-        display: inline;
-    }
-}
-@media (prefers-reduced-motion: reduce) {
-    #prefers-reduced-motion .support {
-        display: inline;
-    }
-    #prefers-reduced-motion .no-support {
-        display: none;
-    }
-    #prefers-reduced-motion .reduce {
-        display: inline;
-    }
-}
-#prefers-reduced-transparency .support,
-#prefers-reduced-transparency .no-preference,
-#prefers-reduced-transparency .reduce {
-    display: none;
-}
-@media (prefers-reduced-transparency: no-preference) {
-    #prefers-reduced-transparency .support {
-        display: inline;
-    }
-    #prefers-reduced-transparency .no-support {
-        display: none;
-    }
-    #prefers-reduced-transparency .no-preference {
-        display: inline;
-    }
-}
-@media (prefers-reduced-transparency: reduce) {
-    #prefers-reduced-transparency .support {
-        display: inline;
-    }
-    #prefers-reduced-transparency .no-support {
-        display: none;
-    }
-    #prefers-reduced-transparency .reduce {
-        display: inline;
-    }
-}
-#scan .support,
-#scan .interlace,
-#scan .progressive {
-    display: none;
-}
-@media (scan: interlace) {
-    #scan .support {
-        display: inline;
-    }
-    #scan .no-support {
-        display: none;
-    }
-    #scan .interlace {
-        display: inline;
-    }
-}
-@media (scan: progressive) {
-    #scan .support {
-        display: inline;
-    }
-    #scan .no-support {
-        display: none;
-    }
-    #scan .progressive {
-        display: inline;
-    }
-}
-#scripting .support,
-#scripting .none,
-#scripting .initial-only,
-#scripting .enabled {
-    display: none;
-}
-@media (scripting: none) {
-    #scripting .support {
-        display: inline;
-    }
-    #scripting .no-support {
-        display: none;
-    }
-    #scripting .none {
-        display: inline;
-    }
-}
-@media (scripting: initial-only) {
-    #scripting .support {
-        display: inline;
-    }
-    #scripting .no-support {
-        display: none;
-    }
-    #scripting .initial-only {
-        display: inline;
-    }
-}
-@media (scripting: enabled) {
-    #scripting .support {
-        display: inline;
-    }
-    #scripting .no-support {
-        display: none;
-    }
-    #scripting .enabled {
-        display: inline;
-    }
-}
-#update .support,
-#update .none,
-#update .slow,
-#update .fast {
-    display: none;
-}
-@media (update: none) {
-    #update .support {
-        display: inline;
-    }
-    #update .no-support {
-        display: none;
-    }
-    #update .none {
-        display: inline;
-    }
-}
-@media (update: slow) {
-    #update .support {
-        display: inline;
-    }
-    #update .no-support {
-        display: none;
-    }
-    #update .slow {
-        display: inline;
-    }
-}
-@media (update: fast) {
-    #update .support {
-        display: inline;
-    }
-    #update .no-support {
-        display: none;
-    }
-    #update .fast {
-        display: inline;
-    }
-}
-
+      }
+      @media (update: none) {
+        #update .support {
+          display: inline;
+        }
+        #update .no-support {
+          display: none;
+        }
+        #update .none {
+          display: inline;
+        }
+      }
+      @media (update: slow) {
+        #update .support {
+          display: inline;
+        }
+        #update .no-support {
+          display: none;
+        }
+        #update .slow {
+          display: inline;
+        }
+      }
+      @media (update: fast) {
+        #update .support {
+          display: inline;
+        }
+        #update .no-support {
+          display: none;
+        }
+        #update .fast {
+          display: inline;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>What does this browser report for media queries?</h1>
     <div id="types">
-        My media type is <span id="print">print</span><span id="screen">screen</span><span id="speech">speech</span>.
+      My media type is <span id="print">print</span
+      ><span id="screen">screen</span><span id="speech">speech</span>.
     </div>
     <div id="any-hover">
-    <span class="no-support">
-        This browser doesn't support <pre>any-hover</pre>.
-    </span>
-    <span class="support">
-        My <pre>any-hover</pre> is <span class="none">none</span><span class="hover">hover</span>.
-    </span>
-</div>
-<div id="any-pointer">
-    <span class="no-support">
-        This browser doesn't support <pre>any-pointer</pre>.
-    </span>
-    <span class="support">
-        My <pre>any-pointer</pre> is <span class="none">none</span><span class="coarse">coarse</span><span class="fine">fine</span>.
-    </span>
-</div>
-<div id="color-gamut">
-    <span class="no-support">
-        This browser doesn't support <pre>color-gamut</pre>.
-    </span>
-    <span class="support">
-        My <pre>color-gamut</pre> is <span class="srgb">srgb</span><span class="p3">p3</span><span class="rec2020">rec2020</span>.
-    </span>
-</div>
-<div id="display-mode">
-    <span class="no-support">
-        This browser doesn't support <pre>display-mode</pre>.
-    </span>
-    <span class="support">
-        My <pre>display-mode</pre> is <span class="fullscreen">fullscreen</span><span class="standalone">standalone</span><span class="minimal-ui">minimal-ui</span><span class="browser">browser</span>.
-    </span>
-</div>
-<div id="forced-colors">
-    <span class="no-support">
-        This browser doesn't support <pre>forced-colors</pre>.
-    </span>
-    <span class="support">
-        My <pre>forced-colors</pre> is <span class="none">none</span><span class="active">active</span>.
-    </span>
-</div>
-<div id="grid">
-    <span class="no-support">
-        This browser doesn't support <pre>grid</pre>.
-    </span>
-    <span class="support">
-        My <pre>grid</pre> is <span class="zero">zero</span><span class="one">one</span>.
-    </span>
-</div>
-<div id="hover">
-    <span class="no-support">
-        This browser doesn't support <pre>hover</pre>.
-    </span>
-    <span class="support">
-        My <pre>hover</pre> is <span class="none">none</span><span class="hover">hover</span>.
-    </span>
-</div>
-<div id="inverted-colors">
-    <span class="no-support">
-        This browser doesn't support <pre>inverted-colors</pre>.
-    </span>
-    <span class="support">
-        My <pre>inverted-colors</pre> is <span class="none">none</span><span class="inverted">inverted</span>.
-    </span>
-</div>
-<div id="orientation">
-    <span class="no-support">
-        This browser doesn't support <pre>orientation</pre>.
-    </span>
-    <span class="support">
-        My <pre>orientation</pre> is <span class="portrait">portrait</span><span class="landscape">landscape</span>.
-    </span>
-</div>
-<div id="overflow-block">
-    <span class="no-support">
-        This browser doesn't support <pre>overflow-block</pre>.
-    </span>
-    <span class="support">
-        My <pre>overflow-block</pre> is <span class="none">none</span><span class="scroll">scroll</span><span class="optional-paged">optional-paged</span><span class="paged">paged</span>.
-    </span>
-</div>
-<div id="overflow-inline">
-    <span class="no-support">
-        This browser doesn't support <pre>overflow-inline</pre>.
-    </span>
-    <span class="support">
-        My <pre>overflow-inline</pre> is <span class="none">none</span><span class="scroll">scroll</span>.
-    </span>
-</div>
-<div id="pointer">
-    <span class="no-support">
-        This browser doesn't support <pre>pointer</pre>.
-    </span>
-    <span class="support">
-        My <pre>pointer</pre> is <span class="none">none</span><span class="fine">fine</span><span class="coarse">coarse</span>.
-    </span>
-</div>
-<div id="prefers-color-scheme">
-    <span class="no-support">
-        This browser doesn't support <pre>prefers-color-scheme</pre>.
-    </span>
-    <span class="support">
-        My <pre>prefers-color-scheme</pre> is <span class="light">light</span><span class="dark">dark</span>.
-    </span>
-</div>
-<div id="prefers-contrast">
-    <span class="no-support">
-        This browser doesn't support <pre>prefers-contrast</pre>.
-    </span>
-    <span class="support">
-        My <pre>prefers-contrast</pre> is <span class="no-preference">no-preference</span><span class="more">more</span><span class="less">less</span>.
-    </span>
-</div>
-<div id="prefers-reduced-motion">
-    <span class="no-support">
-        This browser doesn't support <pre>prefers-reduced-motion</pre>.
-    </span>
-    <span class="support">
-        My <pre>prefers-reduced-motion</pre> is <span class="no-preference">no-preference</span><span class="reduce">reduce</span>.
-    </span>
-</div>
-<div id="prefers-reduced-transparency">
-    <span class="no-support">
-        This browser doesn't support <pre>prefers-reduced-transparency</pre>.
-    </span>
-    <span class="support">
-        My <pre>prefers-reduced-transparency</pre> is <span class="no-preference">no-preference</span><span class="reduce">reduce</span>.
-    </span>
-</div>
-<div id="scan">
-    <span class="no-support">
-        This browser doesn't support <pre>scan</pre>.
-    </span>
-    <span class="support">
-        My <pre>scan</pre> is <span class="interlace">interlace</span><span class="progressive">progressive</span>.
-    </span>
-</div>
-<div id="scripting">
-    <span class="no-support">
-        This browser doesn't support <pre>scripting</pre>.
-    </span>
-    <span class="support">
-        My <pre>scripting</pre> is <span class="none">none</span><span class="initial-only">initial-only</span><span class="enabled">enabled</span>.
-    </span>
-</div>
-<div id="update">
-    <span class="no-support">
-        This browser doesn't support <pre>update</pre>.
-    </span>
-    <span class="support">
-        My <pre>update</pre> is <span class="none">none</span><span class="slow">slow</span><span class="fast">fast</span>.
-    </span>
-</div>
-
-
-</body>
+      <span class="no-support">
+        This browser doesn't support
+        <pre>any-hover</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>any-hover</pre>
+        is <span class="none">none</span><span class="hover">hover</span>.
+      </span>
+    </div>
+    <div id="any-pointer">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>any-pointer</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>any-pointer</pre>
+        is <span class="none">none</span><span class="coarse">coarse</span
+        ><span class="fine">fine</span>.
+      </span>
+    </div>
+    <div id="color-gamut">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>color-gamut</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>color-gamut</pre>
+        is <span class="srgb">srgb</span><span class="p3">p3</span
+        ><span class="rec2020">rec2020</span>.
+      </span>
+    </div>
+    <div id="display-mode">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>display-mode</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>display-mode</pre>
+        is <span class="fullscreen">fullscreen</span
+        ><span class="standalone">standalone</span
+        ><span class="minimal-ui">minimal-ui</span
+        ><span class="browser">browser</span>.
+      </span>
+    </div>
+    <div id="forced-colors">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>forced-colors</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>forced-colors</pre>
+        is <span class="none">none</span><span class="active">active</span>.
+      </span>
+    </div>
+    <div id="grid">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>grid</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>grid</pre>
+        is <span class="zero">zero</span><span class="one">one</span>.
+      </span>
+    </div>
+    <div id="hover">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>hover</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>hover</pre>
+        is <span class="none">none</span><span class="hover">hover</span>.
+      </span>
+    </div>
+    <div id="inverted-colors">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>inverted-colors</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>inverted-colors</pre>
+        is <span class="none">none</span><span class="inverted">inverted</span>.
+      </span>
+    </div>
+    <div id="orientation">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>orientation</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>orientation</pre>
+        is <span class="portrait">portrait</span
+        ><span class="landscape">landscape</span>.
+      </span>
+    </div>
+    <div id="overflow-block">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>overflow-block</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>overflow-block</pre>
+        is <span class="none">none</span><span class="scroll">scroll</span
+        ><span class="optional-paged">optional-paged</span
+        ><span class="paged">paged</span>.
+      </span>
+    </div>
+    <div id="overflow-inline">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>overflow-inline</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>overflow-inline</pre>
+        is <span class="none">none</span><span class="scroll">scroll</span>.
+      </span>
+    </div>
+    <div id="pointer">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>pointer</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>pointer</pre>
+        is <span class="none">none</span><span class="fine">fine</span
+        ><span class="coarse">coarse</span>.
+      </span>
+    </div>
+    <div id="prefers-color-scheme">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>prefers-color-scheme</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>prefers-color-scheme</pre>
+        is <span class="light">light</span><span class="dark">dark</span>.
+      </span>
+    </div>
+    <div id="prefers-contrast">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>prefers-contrast</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>prefers-contrast</pre>
+        is <span class="no-preference">no-preference</span
+        ><span class="more">more</span><span class="less">less</span>.
+      </span>
+    </div>
+    <div id="prefers-reduced-motion">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>prefers-reduced-motion</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>prefers-reduced-motion</pre>
+        is <span class="no-preference">no-preference</span
+        ><span class="reduce">reduce</span>.
+      </span>
+    </div>
+    <div id="prefers-reduced-transparency">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>prefers-reduced-transparency</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>prefers-reduced-transparency</pre>
+        is <span class="no-preference">no-preference</span
+        ><span class="reduce">reduce</span>.
+      </span>
+    </div>
+    <div id="scan">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>scan</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>scan</pre>
+        is <span class="interlace">interlace</span
+        ><span class="progressive">progressive</span>.
+      </span>
+    </div>
+    <div id="scripting">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>scripting</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>scripting</pre>
+        is <span class="none">none</span
+        ><span class="initial-only">initial-only</span
+        ><span class="enabled">enabled</span>.
+      </span>
+    </div>
+    <div id="update">
+      <span class="no-support">
+        This browser doesn't support
+        <pre>update</pre>
+        .
+      </span>
+      <span class="support">
+        My
+        <pre>update</pre>
+        is <span class="none">none</span><span class="slow">slow</span
+        ><span class="fast">fast</span>.
+      </span>
+    </div>
+  </body>
 </html>
